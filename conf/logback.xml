@@ -31,8 +31,10 @@
   </appender>
 
   <appender name="JSON_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-    <remoteHost>intake.logs.datadoghq.com</remoteHost>
-    <port>10514</port>
+    <ssl/>
+    <remoteHost>tcp-intake.logs.datadoghq.eu</remoteHost>
+    <writeBufferSize>0</writeBufferSize>
+    <port>443</port>
     <keepAliveDuration>1 minute</keepAliveDuration>
     <encoder class="net.logstash.logback.encoder.LogstashEncoder">
       <prefix class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">

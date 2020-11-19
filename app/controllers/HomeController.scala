@@ -24,8 +24,8 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
    * a path of `/`.
    */
   def index() = Action { implicit request: Request[AnyContent] =>
-    Logger("play").info("hello from index")
-    Logger("play").error("Error from index")
+    Logger("play").info("hello from index - test2")
+    Logger("play").error("Error from index - test2")
 //    logger.info("Hello from index")
 //    Logger.info("Hello!")
     Ok(views.html.index())
