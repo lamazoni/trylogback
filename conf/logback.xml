@@ -31,7 +31,7 @@
   </appender>
 
   <appender name="JSON_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-    <remoteHost>tcp-intake.logs.datadoghq.com</remoteHost>
+    <remoteHost>intake.logs.datadoghq.com</remoteHost>
     <port>10514</port>
     <keepAliveDuration>1 minute</keepAliveDuration>
     <encoder class="net.logstash.logback.encoder.LogstashEncoder">
@@ -53,7 +53,7 @@
   <logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
 
   <root level="WARN">
-<!--    <appender-ref ref="JSON_TCP" />-->
+    <appender-ref ref="JSON_TCP" />
     <appender-ref ref="JSON" />
 <!--    <appender-ref ref="ASYNCFILE" />-->
 <!--    <appender-ref ref="ASYNCSTDOUT" />-->
