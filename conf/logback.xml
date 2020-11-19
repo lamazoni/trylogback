@@ -26,6 +26,23 @@
     <appender-ref ref="STDOUT" />
   </appender>
 
+  <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+  </appender>
+
+  <appender name="JSON_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <remoteHost>tcp-intake.logs.datadoghq.com</remoteHost>
+    <port>10514</port>
+    <keepAliveDuration>1 minute</keepAliveDuration>
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+      <prefix class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+          <pattern>a2b64beb8c2e0af895ceca1ce2d56003 %mdc{keyThatDoesNotExist}</pattern>
+        </layout>
+      </prefix>
+    </encoder>
+  </appender>
+
   <logger name="play" level="INFO" />
   <logger name="application" level="DEBUG" />
 
@@ -36,7 +53,9 @@
   <logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
 
   <root level="WARN">
-    <appender-ref ref="ASYNCFILE" />
+<!--    <appender-ref ref="JSON_TCP" />-->
+    <appender-ref ref="JSON" />
+<!--    <appender-ref ref="ASYNCFILE" />-->
 <!--    <appender-ref ref="ASYNCSTDOUT" />-->
   </root>
 
